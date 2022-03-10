@@ -1,3 +1,21 @@
+<?php
+include './database/koneksi.php';
+
+if(!isset($_GET['nomor_kendaraan']) ){
+	header('Location: data_mobil.php');
+}
+
+$nomor_kendaraan= $_GET['nomor_kendaraan'];
+
+$sql = "SELECT * FROM mobil WHERE nomor_kendaraan = '$nomor_kendaraan'";
+$query = mysqli_query($koneksi, $sql);
+
+if(mysqli_num_rows($query) == 1){
+	$data = mysqli_fetch_array($query);
+}
+
+?>
+
 <!doctype html>
 <html lang="en">
       <head>
@@ -30,6 +48,36 @@
   <div class="row">
     <div class="col">
       <h1 class="mt-3 ">Sistem Informasi Rental Mobil</h1>
+
+
+      <form action="./database/proses_update.php" method="POST">
+        <div class="form-group">
+          <label for="nomor_kendaraan">Nomor Kendaraan</label>
+          <input type="text" name="nomor_kendaraan" class="form-control" id="nomor_kendaraan" value="<?php echo($data['nomor_kendaraan']);?>">
+        </div>
+        <div class="form-group">
+          <label for="merk">Merk</label>
+          <input type="text" name="merk" class="form-control" id="merk" value="<?php echo($data['merk']);?>" >
+        </div>
+        <div class="form-group">
+          <label for="jenis">Jenis</label>
+          <input type="text" name="jenis" class="form-control" id="jenis" value="<?php echo($data['jenis']);?>" >
+        </div>
+        <div class="form-group">
+          <label for="gambar">Gambar</label>
+          <input type="text" name="gambar" class="form-control" id="gambar" value="<?php echo($data['gambar']);?>" >
+        </div>
+        <div class="form-group">
+          <label for="kapasitas">Kapasitas </label>
+          <input type="number" name="kapasitas" class="form-control" id="kapasitas" value="<?php echo($data['kapasitas']);?>" >
+        </div>
+        <div class="form-group">
+          <label for="bahan_bakar">Bahan Bakar</label>
+          <input type="text" name="bahan_bakar" class="form-control" id="bahan_bakar" value="<?php echo($data['bahan_bakar']);?>">
+        </div>
+        
+        <button type="submit"  class="btn btn-primary">Submit</button>
+      </form>
     </div>
   </div>
 </div>

@@ -30,6 +30,34 @@
   <div class="row">
     <div class="col">
       <h1 class="mt-3 ">Sistem Informasi Rental Mobil</h1>
+      <form action="./database/proses_simpan.php" method="POST">
+        <div class="form-group">
+          <label for="nomor_kendaraan">Nomor Kendaraan</label>
+          <input type="text" name="nomor_kendaraan" class="form-control" id="nomor_kendaraan">
+        </div>
+        <div class="form-group">
+          <label for="merk">Merk</label>
+          <input type="text" name="merk" class="form-control" id="merk">
+        </div>
+        <div class="form-group">
+          <label for="jenis">Jenis</label>
+          <input type="text" name="jenis" class="form-control" id="jenis">
+        </div>
+        <div class="form-group">
+          <label for="gambar">Gambar</label>
+          <input type="text" name="gambar" class="form-control" id="gambar">
+        </div>
+        <div class="form-group">
+          <label for="kapasitas">Kapasitas </label>
+          <input type="number" name="kapasitas" class="form-control" id="kapasitas">
+        </div>
+        <div class="form-group">
+          <label for="bahan_bakar">Bahan Bakar</label>
+          <input type="text" name="bahan_bakar" class="form-control" id="bahan_bakar">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </div>
   </div>
 </div>
